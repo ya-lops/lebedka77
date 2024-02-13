@@ -7,7 +7,7 @@ interface Hero {
 
 import { Image } from "astro:assets";
 import heroImage from "@/images/hero.jpg";
-import ButtonLink from "@/components/partial/ButtonLink.astro"
+import ButtonLink from "@/components/partial/ButtonLink.astro";
 
 const { title, text, classes, ...rest } = Astro.props;
 
@@ -30,7 +30,10 @@ const data = {
         <ButtonLink theme="ghost" href="tel:79255144137">
           Позвонить
         </ButtonLink>
-        <ButtonLink theme="ghost" href="https://api.whatsapp.com/send/?phone=79255144137&text=Здравствуйте%2Мне+нужна+помощь+Лебёдки">
+        <ButtonLink
+          theme="ghost"
+          href="https://api.whatsapp.com/send/?phone=79255144137&text=Здравствуйте!+Мне+нужна+помощь+Лебёдки"
+        >
           WhatsApp
         </ButtonLink>
         <ButtonLink theme="ghost" href="https://t.me/CrazyTetra">
@@ -57,8 +60,14 @@ const data = {
     height: var(--_height);
     background: var(--color-surface-1);
     overflow: clip;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
-      url(/images/bg1.jpg);
+
+    @media (hover: hover) {
+      background-image: linear-gradient(
+          rgba(0, 0, 0, 0.75),
+          rgba(0, 0, 0, 0.75)
+        ),
+        url(/images/bg1.jpg);
+    }
 
     &__inner {
       display: grid;
@@ -132,19 +141,21 @@ const data = {
       }
 
       img {
-        animation: shadowin forwards;
-        animation-delay: 0.33s;
-        animation-duration: 1.5s;
+        @media (hover: hover) {
+          animation: shadowin forwards;
+          animation-delay: 0.33s;
+          animation-duration: 1.5s;
 
-        @keyframes shadowin {
-          from {
-            filter: drop-shadow(0 0 0 #ae52523d) drop-shadow(0 0 0 #ae525221)
-              drop-shadow(0 0 0 #ae52523d) drop-shadow(0 0 0 #ae525221);
-          }
-          to {
-            filter: drop-shadow(42px 0 0 #ae52523d)
-              drop-shadow(84px 0 0 #ae525221) drop-shadow(-42px 0 0 #ae52523d)
-              drop-shadow(-84px 0 0 #ae525221);
+          @keyframes shadowin {
+            from {
+              filter: drop-shadow(0 0 0 #ae52523d) drop-shadow(0 0 0 #ae525221)
+                drop-shadow(0 0 0 #ae52523d) drop-shadow(0 0 0 #ae525221);
+            }
+            to {
+              filter: drop-shadow(42px 0 0 #ae52523d)
+                drop-shadow(84px 0 0 #ae525221) drop-shadow(-42px 0 0 #ae52523d)
+                drop-shadow(-84px 0 0 #ae525221);
+            }
           }
         }
 
@@ -154,7 +165,7 @@ const data = {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          opacity: 0.5;
+          opacity: 0.25;
           margin-left: auto;
           translate: 50% 0;
           height: var(--_height);
