@@ -43,12 +43,12 @@ const {
           <div class="app-section__images _images">
             {imageOneSrc && (
               <div class="_imageOne">
-                <img src={imageOneSrc} alt="" loading="lazy" />
+                <img src={imageOneSrc} width="650" alt="" loading="lazy" />
               </div>
             )}
             {imageTwoSrc && (
               <div class="_imageTwo">
-                <img src={imageTwoSrc} alt="" loading="lazy" />
+                <img src={imageTwoSrc} width="650" alt="" loading="lazy" />
               </div>
             )}
           </div>
@@ -60,9 +60,9 @@ const {
 
           {
             subtitle && (
-              <h4 class="_subtitle">
+              <h3 class="_subtitle">
                 <div set:html={subtitle} />
-              </h4>
+              </h3>
             )
           }
 

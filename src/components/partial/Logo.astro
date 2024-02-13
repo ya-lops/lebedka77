@@ -11,7 +11,7 @@ const { size = "s" } = Astro.props;
 
 <div class:list={["app-logo", { "+m": size == "m", "+l": size == "l" }]}>
   <div class="_media">
-    <Image src={logoImage} alt="Логотип организации Лебёдка77"/>
+    <img src="/images/logo.webp" width="64" height="64" alt="Лебедка77 - логотип, на котором изображен внедорожник в грязи"/>
   </div>
   <div class="_text">
     Лебёдка<mark>77</mark>
@@ -19,9 +19,6 @@ const { size = "s" } = Astro.props;
 </div>
 
 <style lang="scss">
-  
-  @import url('https://fonts.googleapis.com/css2?family=Comforter+Brush&display=swap');
-
   .app-logo {
     display: flex;
     align-items: center;

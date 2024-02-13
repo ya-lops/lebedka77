@@ -36,7 +36,7 @@ import ButtonLink from "@/components/partial/ButtonLink.astro";
   >
     <Split>
       <Fragment slot="start">
-        <Image src={howItWorksImage} alt="Грязная машина" />
+        <Image src={howItWorksImage} quality="mid" alt="Грязная машина" decoding="auto"/>
       </Fragment>
       <Fragment slot="end">
         <HowItWorks />
@@ -62,7 +62,7 @@ import ButtonLink from "@/components/partial/ButtonLink.astro";
   <Section title="<mark>Как</mark> мы помогаем">
     <Split>
       <Fragment slot="end">
-        <Image src={featuresImage} alt="Грязная машина" />
+        <Image src={featuresImage} quality="mid" alt="Грязная машина" decoding="auto"/>
       </Fragment>
       <Fragment slot="start">
         <Features />
@@ -118,7 +118,6 @@ import ButtonLink from "@/components/partial/ButtonLink.astro";
 
   .\+frame {
     position: relative;
-    isolation: isolate;
 
     &::after {
       content: "";

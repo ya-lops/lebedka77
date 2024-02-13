@@ -69,16 +69,13 @@
 
 <style lang="scss">
   .app-features {
-    display: grid;
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    display: flex;
+    flex-flow: column;
     gap: 2.4rem;
-    justify-content: center;
   }
 
   .app-feature {
     ._inner {
-      place-self: center;
-      height: 100%;
       padding: 3.2rem;
       border-radius: var(--radius-3);
       background: var(--color-surface-0);
