@@ -1,0 +1,163 @@
+---
+import { Image } from "astro:assets";
+import howItWorksImage from "@/images/help1.jpg";
+import featuresImage from "@/images/help3.jpg";
+
+import Lebedka from "@/layouts/Lebedka.astro";
+
+import Hero from "@/components/Hero.astro";
+import Header from "@/components/Header.astro";
+import Faq from "@/components/Faq.astro";
+import Section from "@/components/Section.astro";
+import Footer from "@/components/Footer.astro";
+import Features from "@/components/Features.astro";
+import Review from "@/components/ReviewList.astro";
+import Split from "@/components/partial/Split.astro";
+import HowItWorks from "@/components/HowItWorks.astro";
+import WorkFlow from "@/components/WorkFlow.astro";
+import ButtonLink from "@/components/partial/ButtonLink.astro";
+---
+
+<Lebedka>
+  <Header />
+
+  <Hero />
+
+  <Section
+    centeredTitle
+    subtitle="лебёдка"
+    title="Мы специализируемся на оказании помощи в сложных внедорожных ситуациях. Наша команда профессионалов готова прийти на помощь в любое время и в любом месте, чтобы вытащить вас из грязи, снега или других сложных условий."
+  />
+
+  <Section
+    id="how-it-works"
+    title="Почему <mark>мы сможем помочь</mark>"
+    subtitle="Почему мы"
+  >
+    <Split>
+      <Fragment slot="start">
+        <Image src={howItWorksImage} alt="Грязная машина" />
+      </Fragment>
+      <Fragment slot="end">
+        <HowItWorks />
+      </Fragment>
+    </Split>
+  </Section>
+
+  <Section
+    centeredTitle
+    subtitle="лебёдка"
+    title="Мы используем только самое современное оборудование и технику, чтобы обеспечить <mark>быстрое и эффективное решение вашей проблемы</mark>. Доверьтесь нам, и мы вытащим вас из любой ситуации!</span>"
+  />
+
+  <Section
+    centeredTitle
+    id="work"
+    title="В каких ситуациях <mark>мы сможем помочь</mark>"
+    subtitle="Помощь каждому"
+  >
+    <WorkFlow />
+  </Section>
+
+  <Section title="<mark>Как</mark> мы помогаем">
+    <Split>
+      <Fragment slot="end">
+        <Image src={featuresImage} alt="Грязная машина" />
+      </Fragment>
+      <Fragment slot="start">
+        <Features />
+      </Fragment>
+    </Split>
+  </Section>
+
+  <Section id="photos" title="Фотографии" subtitle="Работаем">
+    <!-- Фотки -->
+  </Section>
+
+  <Section
+    subtitle="помогать"
+    title="Вступайте <mark>в группу помощи</mark> и получите скидку до 25%"
+  >
+    <ButtonLink
+      classes="+centered"
+      size="l"
+      href="#get-free-lesson-form"
+      theme="ghost">Вступить в группу</ButtonLink
+    >
+  </Section>
+
+  <Section
+    id="reviews"
+    title="Более <mark>750</mark> обратившимся успешно оказана помощь"
+    subtitle="отзывы"
+  >
+    <Review />
+  </Section>
+
+  <Section id="faq" title="Часто задаваемые вопросы" subtitle="Вопросы">
+    <Faq />
+  </Section>
+
+  <Footer />
+</Lebedka>
+
+<style is:global>
+  mark {
+    color: var(--color-accent);
+    background: none;
+  }
+
+  .\+centered {
+    margin-inline: auto;
+  }
+
+  img {
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .\+frame {
+    position: relative;
+    isolation: isolate;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--color-accent);
+      transform: rotate(1deg) skewX(0.9deg);
+      z-index: -1;
+      border-radius: var(--radius-3);
+      opacity: 0.25;
+    }
+
+    & + &::after {
+      transform: rotate(-0.5deg) skewX(-0.71deg);
+    }
+
+    & + & + &::after {
+      transform: rotate(-1.2deg) skewX(-0.11deg);
+    }
+  }
+
+  ._free-lesson {
+    text-wrap: balance;
+    line-height: 1.5;
+
+    h3 {
+      font-family: var(--font-family-secondary);
+      font-size: 3.2rem;
+    }
+
+    p {
+      font-size: 2.4rem;
+    }
+  }
+
+  hr {
+    width: 100%;
+    border: 0;
+    height: 2px;
+    background: var(--color-accent);
+  }
+</style>

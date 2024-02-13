@@ -1,0 +1,32 @@
+---
+
+---
+
+<div class="app-split">
+  <div>
+    <slot name="start"/>
+  </div>
+  <div>
+    <slot name="end"/>
+  </div>
+</div>
+
+<style lang="scss">
+  .app-split {
+    display: grid;
+    grid-template-columns: minmax(0,1fr);
+    align-items: center;
+    gap: 6.4rem;
+    width: 100%;
+
+    @media (width > 960px) {
+      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    }
+
+    > div {
+      display: flex;
+      flex-flow: column;
+      gap: 3.6rem;
+    }
+  }
+</style>

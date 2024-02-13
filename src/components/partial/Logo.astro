@@ -1,0 +1,64 @@
+---
+import { Image } from 'astro:assets';
+import logoImage from '@/images/logo.jpg';
+
+interface Props {
+  size?: "s" | "m" | "l";
+}
+
+const { size = "s" } = Astro.props;
+---
+
+<div class:list={["app-logo", { "+m": size == "m", "+l": size == "l" }]}>
+  <div class="_media">
+    <Image src={logoImage} alt="Логотип организации Лебёдка77"/>
+  </div>
+  <div class="_text">
+    Лебёдка
+  </div>
+</div>
+
+<style lang="scss">
+  
+  @import url('https://fonts.googleapis.com/css2?family=Comforter+Brush&display=swap');
+
+  .app-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-shrink: 0;
+    color: var(--color-text-primary);
+    
+    font-family: 'Comforter Brush', cursive;
+    font-size: clamp(2.4rem, 2vw, 3.6rem);
+    font-weight: 500;
+    user-select: none;
+    outline: none;
+
+    &.\+m {
+      max-width: 150px;
+    }
+
+    &.\+l {
+      max-width: 180px;
+    }
+
+    ._media {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+      font-size: 3rem;
+      max-width: 100%;
+      height: 45px;
+      aspect-ratio: 1;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 6px;
+      }
+    }
+  }
+</style>

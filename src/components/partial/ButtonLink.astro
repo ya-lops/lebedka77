@@ -1,0 +1,92 @@
+---
+interface Props {
+  size?: "s" | "m" | "l";
+  title?: string;
+  theme?: "ghost" | "default" | "primary" | "link";
+  href: string;
+  classes?: string;
+}
+
+const {
+  size = "m",
+  title,
+  theme = "default",
+  href,
+  classes,
+  ...rest
+} = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  class:list={[
+    "app-btn-link",
+    { "+ghost": theme == "ghost" },
+    { "+primary": theme == "primary" },
+    { "+link": theme == "link" },
+    { "+s": size == "s" },
+    { "+l": size == "l" },
+    classes,
+  ]}
+  {...rest}
+>
+  <slot />
+</a>
+
+<style lang="scss">
+  .app-btn-link {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--_pads, 0.625em 1.25em);
+    border-radius: var(--radius-2);
+    border: 1px solid var(--_border-color, transparent);
+    background: var(--_bg, transparent);
+    color: var(--_color, var(--color-text-primary));
+    font-size: var(--_fz, 1.6rem);
+    font-weight: 500;
+    font-family: var(--font-family-default);
+    text-decoration: none;
+    user-select: none;
+    outline: none;
+
+    &:hover {
+      background: var(--_bg-hover, var(--color-accent));
+      color: var(--_color-hover, var(--color-text-primary-inverse));
+    }
+
+    &.\+l {
+      font-size: clamp(1.8rem, 2vw, 3.2rem);
+      padding: 1em 2em;
+    }
+
+    &.\+ghost {
+      --_bg: transparent;
+      --_bg-hover: var(--color-accent);
+      --_color: var(--color-text-accent);
+      --_color-hover: var(--color-text-primary-inverse);
+      --_border-color: var(--color-accent);
+      border-width: 3px;
+    }
+
+    &.\+primary {
+      --_bg: var(--color-accent);
+      --_bg-hover: var(--color-accent-dark);
+      --_color: var(--color-text-primary-inverse);
+      --_color-hover: var(--color-text-primary-inverse);
+    }
+
+    &.\+link {
+      --_bg: transparent;
+      --_bg-hover: transparent --_color: var(--color-text-accent);
+      --_color-hover: var(--color-accent);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+</style>

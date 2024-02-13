@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ru" class="app-lebedka">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лебёдка - внедорожная эвакуация</title>
+    <meta
+      name="description"
+      content="Помощь на дороге | внедорожная эвакуация легковых и грузовых автомобилей любой сложности"
+    />
+    <meta
+      name="keywords"
+      content="помощь, бездорожье, внедорожье, застрял, эвакуация, буксировка"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Лебёдка" />
+    <meta
+      property="og:description"
+      content="Помощь на дороге | внедорожная эвакуация легковых и грузовых автомобилей любой сложности"
+    />
+    <meta property="og:url" content="http://www.lebedka77.ru/" />
+    <meta property="og:image" content="http://www.lebedka77.ru/siteimg.jpg" />
+    <meta property="og:site_name" content="Лебёдка" />
+    <meta property="og:locale" content="ru_RU" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+  </head>
+  <body class="">
+    <slot />
+  </body>
+</html>
+
+<style lang="scss" is:global>
+  @import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap");
+  @import url("https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap");
+
+  :root {
+    --color-accent: hsl(30, 97%, 51%);
+    --color-surface-0: hsl(222, 67%, 6%);
+    --color-surface-0-light: hsl(222, 67%, 6%);
+    --color-surface-1: color-mix(in oklab, var(--color-accent), #000 65%);
+    --color-accent-dark: color-mix(in oklab, var(--color-accent), #000 5%);
+    --color-text-accent: var(--color-accent);
+    --color-text-primary: hsl(33, 12%, 82%);
+    --color-text-primary-inverse: hsl(33, 12%, 22%);
+    --color-text-secondary: color-mix(
+      in oklab,
+      var(--color-text-primary),
+      #fff 10%
+    );
+    --color-line: hsl(222, 67%, 6%);
+    --color-line-light: color-mix(in oklab, var(--color-line), #fff 5%);
+    --color-line-accent: var(--color-accent);
+    --padding-inline: 1.6rem;
+
+    --font-family-primary: "Exo 2", Tahoma, Geneva, Verdana, sans-serif;
+    --font-family-secondary: "Rubik Vinyl", Tahoma, Geneva, Verdana, sans-serif;
+    --font-family-default: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+    --shadow-1: 0px 4px 30px 0px rgba(0, 0, 0, 0.05);
+    --shadow-2: 0 0 22px rgba(0, 0, 0, 0.075);
+    --shadow-3: 0px 6px 30px rgba(0, 0, 0, 0.06);
+    --radius-1: 3px;
+    --radius-2: 6px;
+    --radius-3: 9px;
+
+    @media (min-width: 576px) {
+      --container-max-width: 540px;
+    }
+
+    @media (min-width: 768px) {
+      --container-max-width: 720px;
+    }
+
+    @media (min-width: 992px) {
+      --container-max-width: 960px;
+    }
+
+    @media (min-width: 1200px) {
+      --container-max-width: 1140px;
+    }
+
+    @media (min-width: 1400px) {
+      --container-max-width: 1320px;
+    }
+  }
+
+  .app-lebedka {
+    font-size: 62.5%;
+    view-timeline: --app;
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    body {
+      background-color: var(--color-surface-0-light);
+      color: var(--color-text-primary);
+      font-size: 1rem;
+      font-family: var(--font-family-primary);
+      -webkit-text-size-adjust: 100%;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: var(--font-family-primary);
+      font-weight: 400;
+      font-size: 1.6rem;
+      line-height: 2.7rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max-width, auto);
+      margin-inline: auto;
+      padding-inline: var(--padding-inline, 0.75rem);
+    }
+  }
+</style>

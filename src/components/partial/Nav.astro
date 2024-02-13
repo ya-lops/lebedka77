@@ -1,0 +1,65 @@
+---
+const baseUrl = "/";
+
+const links = [
+  {
+    label: "Кто мы",
+    href: baseUrl + "#how-it-works",
+  },
+  {
+    label: "Кому поможем",
+    href: baseUrl + "#work",
+  },
+  {
+    label: "Фото",
+    href: baseUrl + "#photos",
+  },
+  {
+    label: "Отзывы",
+    href: baseUrl + "#reviews",
+  },
+  {
+    label: "Вопрос/Ответ",
+    href: baseUrl + "#faq",
+  },
+];
+---
+
+<nav class="app-nav">
+  <ul class="_list">
+    {
+      links.map((link) => (
+        <li class:list={["_item"]}>
+          <a href={link.href} class="_link">
+            <span>{link.label}</span>
+            
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+
+<style lang="scss">
+  .app-nav {
+    ._list {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 3.2rem;
+      padding: 0;
+      background: var(--color-surface-0-light);
+    }
+
+    ._link {
+      padding-block: 1.2rem;
+      color: var(--color-text-secondary);
+      font-weight: 500;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--color-text-accent);
+      }
+    }
+  }
+</style>

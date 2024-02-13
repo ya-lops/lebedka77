@@ -1,0 +1,191 @@
+---
+interface Hero {
+  title: string;
+  text: string;
+  image: string;
+}
+
+import { Image } from "astro:assets";
+import heroImage from "@/images/hero.jpg";
+import ButtonLink from "@/components/partial/ButtonLink.astro"
+
+const { title, text, classes, ...rest } = Astro.props;
+
+const data = {
+  title: "Застряли? Вытащим!",
+  text: "Мы специализируемся на оказании помощи в сложных внедорожных ситуациях. Наша команда профессионалов готова прийти на помощь в любое время и в любом месте, чтобы вытащить вас из грязи, снега или других сложных условий.",
+};
+---
+
+<section class:list={["app-hero", { classes }, { ...rest }]}>
+  <div class="app-hero__inner">
+    <div class="_text">
+      <h1 class="_title">{data.title}</h1>
+      <p class="_message">
+        Звони – вытащим из любой ситуации.<br />Москва и Московская область.<br
+        />24/7
+      </p>
+
+      <div class="_phones">
+        <ButtonLink theme="ghost" href="tel:79255144137">
+          Позвонить
+        </ButtonLink>
+        <ButtonLink theme="ghost" href="https://api.whatsapp.com/send/?phone=79255144137&text=Здравствуйте%2Мне+нужна+помощь+Лебёдки">
+          WhatsApp
+        </ButtonLink>
+        <ButtonLink theme="ghost" href="https://t.me/CrazyTetra">
+          Telegram
+        </ButtonLink>
+      </div>
+    </div>
+    <div class="_image">
+      <Image src={heroImage} alt="Бездорожье с застрявшими машинами" />
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .app-hero {
+    --_height: min(600px, 90dvh);
+
+    @media (width > 960px) {
+      --_height: clamp(600px, 100dvh, 800px);
+    }
+
+    display: grid;
+    grid-template-columns: 100%;
+    height: var(--_height);
+    background: var(--color-surface-1);
+    overflow: clip;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+      url(/images/bg1.jpg);
+
+    &__inner {
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1fr) repeat(
+          2,
+          minmax(0, calc(var(--container-max-width) / 2))
+        )
+        minmax(0, 1fr);
+      grid-template-areas: ". text image image";
+      height: 100%;
+
+      @media (width < 960px) {
+        grid-template-columns: 100%;
+        grid-template-areas: "image";
+      }
+    }
+
+    ._text {
+      display: flex;
+      flex-flow: column;
+      align-items: flex-start;
+      gap: 2.4rem;
+      grid-area: text;
+      align-self: center;
+
+      @media (width < 960px) {
+        position: relative;
+        z-index: 2;
+        grid-area: image;
+        padding-block: 3.2rem;
+        padding-inline: 1.6rem;
+        max-width: var(--container-max-width);
+        justify-self: center;
+        height: 100%;
+      }
+
+      h1 {
+        margin: auto;
+        color: var(--color-text-primary);
+        font-size: clamp(3.2rem, 7vmin, 7.2rem);
+        line-height: 1.15;
+        font-weight: 600;
+        text-wrap: balance;
+        font-family: var(--font-family-secondary);
+      }
+
+      ._message {
+        color: var(--color-text-default);
+        text-wrap: balance;
+        font-family: var(--font-family-primary);
+        font-size: 2.4rem;
+        line-height: 1.2;
+      }
+
+      ._phones {
+        display: flex;
+        flex-flow: column;
+        gap: 1.6rem;
+        width: 80%;
+      }
+    }
+
+    ._image {
+      position: relative;
+      grid-area: image;
+
+      @media (width < 960px) {
+        place-self: end end;
+        text-align: right;
+      }
+
+      img {
+        animation: shadowin forwards;
+        animation-delay: 0.33s;
+        animation-duration: 1.5s;
+
+        @keyframes shadowin {
+          from {
+            filter: drop-shadow(0 0 0 #ae52523d) drop-shadow(0 0 0 #ae525221)
+              drop-shadow(0 0 0 #ae52523d) drop-shadow(0 0 0 #ae525221);
+          }
+          to {
+            filter: drop-shadow(42px 0 0 #ae52523d)
+              drop-shadow(84px 0 0 #ae525221) drop-shadow(-42px 0 0 #ae52523d)
+              drop-shadow(-84px 0 0 #ae525221);
+          }
+        }
+
+        @media (width < 960px) {
+          position: relative;
+          z-index: 1;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0.5;
+          margin-left: auto;
+          translate: 50% 0;
+          height: var(--_height);
+        }
+
+        @media (width > 960px) {
+          width: auto;
+          height: var(--_height);
+        }
+      }
+    }
+
+    ._image-description {
+      display: none;
+
+      @media (width > 960px) {
+        position: absolute;
+        left: 10%;
+        bottom: 10%;
+        display: block;
+        padding: 0.8rem;
+        background: rgba(255, 255, 255, 0.5);
+        box-shadow: -24px 0 0 rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(5px);
+
+        h5 {
+          font-family: var(--font-family-secondary);
+          font-size: 3rem;
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+</style>

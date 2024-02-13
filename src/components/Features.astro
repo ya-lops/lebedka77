@@ -1,0 +1,120 @@
+---
+
+---
+
+<div class="app-features">
+  <div class="app-feature +frame">
+    <div class="_inner">
+      <div class="_icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="1em"
+          height="1em"
+          viewBox="0 0 24 24"
+          ><path
+            fill="currentColor"
+            fill-rule="evenodd"
+            d="M22 12c0 5.523-4.477 10-10 10c-1.6 0-3.112-.376-4.452-1.044a1.634 1.634 0 0 0-1.149-.133l-2.226.596a1.3 1.3 0 0 1-1.591-1.592l.595-2.226a1.633 1.633 0 0 0-.134-1.148A9.96 9.96 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10M12 7.25a.75.75 0 0 1 .75.75v8a.75.75 0 0 1-1.5 0V8a.75.75 0 0 1 .75-.75M8.75 10a.75.75 0 0 0-1.5 0v4a.75.75 0 0 0 1.5 0zM16 9.25a.75.75 0 0 1 .75.75v4a.75.75 0 0 1-1.5 0v-4a.75.75 0 0 1 .75-.75"
+            clip-rule="evenodd"></path></svg
+        >
+      </div>
+      <div class="_title">Свяжитесь с нами</div>
+      <div class="_description">
+        Звоните по номеру <a href="tel:79255144137">+7 (925) 514 4137</a> или нажмите кнопку "Нужна
+        помощь!"
+      </div>
+    </div>
+  </div>
+  <div class="app-feature +frame">
+    <div class="_inner">
+      <div class="_icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="1em"
+          height="1em"
+          viewBox="0 0 24 24"
+          ><path
+            fill="currentColor"
+            d="M11 17h2v-6h-2zm1-8q.425 0 .713-.288T13 8q0-.425-.288-.712T12 7q-.425 0-.712.288T11 8q0 .425.288.713T12 9m0 13q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22"
+          ></path></svg
+        >
+      </div>
+      <div class="_title">Опишите ситуацию</div>
+      <div class="_description">
+        Передайте нам ваше местоположение и какой автомобиль попал в беду.
+      </div>
+    </div>
+  </div>
+  <div class="app-feature +frame">
+    <div class="_inner">
+      <div class="_icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="1em"
+          height="1em"
+          viewBox="0 0 24 24"
+          ><path
+            fill="currentColor"
+            d="m10.6 16.2l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h14q.825 0 1.413.588T21 5v14q0 .825-.587 1.413T19 21z"
+          ></path></svg
+        >
+      </div>
+      <div class="_title">Подтверждение</div>
+      <div class="_description">
+        Подтвердите готовность принять помощь по предложенным условиям.
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .app-features {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 2.4rem;
+    justify-content: center;
+  }
+
+  .app-feature {
+    ._inner {
+      place-self: center;
+      height: 100%;
+      padding: 3.2rem;
+      border-radius: var(--radius-3);
+      background: var(--color-surface-0);
+    }
+
+    ._icon {
+      width: 48px;
+      aspect-ratio: 1;
+
+      svg {
+        width: 100%;
+        height: 100%;
+        color: var(--color-accent);
+      }
+
+      @media (width > 960px) {
+        width: 80px;
+      }
+    }
+
+    ._title {
+      margin-top: 1.6rem;
+      font-weight: bold;
+      font-size: 2.4rem;
+      font-family: var(--font-family-primary);
+    }
+
+    ._description {
+      margin-top: 2.4rem;
+      color: var(--color-text-secondary);
+      text-align: right;
+      text-wrap: pretty;
+
+      a {
+        color: inherit;
+      }
+    }
+  }
+</style>

@@ -1,0 +1,83 @@
+---
+const flow = [
+  {
+    name: "Легковая техника",
+    text: "Мы вытащим вас из грязи!",
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m16 6l3 4h2c1.11 0 2 .89 2 2v3h-2a3 3 0 0 1-3 3a3 3 0 0 1-3-3H9a3 3 0 0 1-3 3a3 3 0 0 1-3-3H1v-3c0-1.11.89-2 2-2l3-4zm-5.5 1.5H6.75L4.86 10h5.64zm1.5 0V10h5.14l-1.89-2.5zm-6 6A1.5 1.5 0 0 0 4.5 15A1.5 1.5 0 0 0 6 16.5A1.5 1.5 0 0 0 7.5 15A1.5 1.5 0 0 0 6 13.5m12 0a1.5 1.5 0 0 0-1.5 1.5a1.5 1.5 0 0 0 1.5 1.5a1.5 1.5 0 0 0 1.5-1.5a1.5 1.5 0 0 0-1.5-1.5"/></svg>',
+  },
+  {
+    name: "Грузовой транспорт",
+    text: "Мы вытащим ваш грузовик из грязи!",
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M20 8h-5v6H2v3h1a3 3 0 0 0 3 3a3 3 0 0 0 3-3h6a3 3 0 0 0 3 3a3 3 0 0 0 3-3h2v-5zM6 18.5A1.5 1.5 0 0 1 4.5 17A1.5 1.5 0 0 1 6 15.5A1.5 1.5 0 0 1 7.5 17A1.5 1.5 0 0 1 6 18.5m12 0a1.5 1.5 0 0 1-1.5-1.5a1.5 1.5 0 0 1 1.5-1.5a1.5 1.5 0 0 1 1.5 1.5a1.5 1.5 0 0 1-1.5 1.5M17 12V9.5h2.5l1.96 2.5zm1-5h-4v6H3L1.57 8H1V6h12l1-1h4z"/></svg>',
+  },
+  {
+    name: "Спецтехника",
+    text: "Мы вытащим вашу спецтехнику из грязи!",
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M20 8h-5v6H2v3h1c0 1.7 1.3 3 3 3s3-1.3 3-3h6c0 1.7 1.3 3 3 3s3-1.3 3-3h2v-5zM6 18.5c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5s1.5.7 1.5 1.5s-.7 1.5-1.5 1.5m12 0c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5s1.5.7 1.5 1.5s-.7 1.5-1.5 1.5M17 12V9.5h2.5l2 2.5zm-3-2.5c0 1.9-1.6 3.5-3.5 3.5h-6C2.6 13 1 11.4 1 9.5S2.6 6 4.5 6H5V5H4V4h4v1H7v1h3.5C12.4 6 14 7.6 14 9.5"/></svg>',
+  },
+  {
+    name: "Коммерческий транспорт",
+    text: "Мы вытащим ваш коммерческий транспорт из грязи!",
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M.75 7.5h9.75l.75 1.5H1.5zm1 3h9.75l.75 1.5H2.5zm16.25 8c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5s.67 1.5 1.5 1.5m1.5-9H17V12h4.46zM8 18.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5s.67 1.5 1.5 1.5M20 8l3 4v5h-2c0 1.66-1.34 3-3 3s-3-1.34-3-3h-4c0 1.66-1.35 3-3 3c-1.66 0-3-1.34-3-3H3v-3.5h2V15h.76c.55-.61 1.35-1 2.24-1c.89 0 1.69.39 2.24 1H15V6H3c0-1.11.89-2 2-2h12v4z"/></svg>',
+  },
+  {
+    name: "Подъем или яма",
+    text: "Мы поднимем ваш автомобиль из ямы!",
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="m14 6l-3.75 5l2.85 3.8l-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22z"/></svg>',
+  },
+  {
+    name: "Квадроциклы и Багги",
+    text: "Мы вытащим ваш квадроцикл или багги из грязи!",
+    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M20 11c-.2 0-.4 0-.5.1L17.4 9H20V6l-3.7 1.9L13.4 5H9v2h3.6l2 2H11l-4 2l-2-2H0v2h4c-2.2 0-4 1.8-4 4s1.8 4 4 4s4-1.8 4-4l2 2h3l3.5-6.1l1 1c-.9.7-1.5 1.9-1.5 3.1c0 2.2 1.8 4 4 4s4-1.8 4-4s-1.8-4-4-4M4 17c-1.1 0-2-.9-2-2s.9-2 2-2s2 .9 2 2s-.9 2-2 2m16 0c-1.1 0-2-.9-2-2s.9-2 2-2s2 .9 2 2s-.9 2-2 2"/></svg>',
+  },
+];
+
+const data = flow;
+---
+
+<ul class="app-how-list">
+  {
+    data.map((item) => (
+      <li class="_item">
+        <div class="_icon" set:html={item.icon} />
+        <div class="_text" set:html={item.name} />
+      </li>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  .app-how-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: minmax(0, 1fr);
+    gap: 4.8rem;
+    width: 100%;
+
+    @media (width < 960px) {
+      grid-template-columns: minmax(0, 1fr);
+      grid-auto-rows: unset;
+    }
+
+    ._item {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    ._icon {
+      font-size: 10rem;
+      color: var(--color-accent);
+    }
+
+    ._text {
+      font-size: 3.2rem;
+      line-height: 1;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      text-wrap: balance;
+    }
+  }
+</style>

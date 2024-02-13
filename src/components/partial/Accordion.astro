@@ -1,0 +1,83 @@
+---
+const { data } = Astro.props;
+---
+
+<div class="app-accordion" x-data="{ activeAccordion: 0 }" class="space-y-2">
+  {data.map((item, index) => (
+    <div class="_item" :class={"{'+active' : activeAccordion === "+index+"}"}>
+      <div class="_title" x-on:click={"activeAccordion = activeAccordion === "+index+" ? false : " + index}>
+        <span>{item.question}</span>
+        <span class="_marker"></span>
+      </div>
+      <div class="_content">
+        <div class="_inner">
+          {item.answer}
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<style lang="scss">
+  .app-accordion {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(500px, 80vw), 1fr));
+    align-items: start;
+    gap: 2.4rem;
+
+    ._item {
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: auto minmax(0,0fr);
+      align-content: start;
+      border-radius: var(--radius-2);
+      background: var(--color-surface-0-light);
+      transition: grid-template-rows .25s;
+      cursor: pointer;
+
+      &.\+active {
+        grid-template-rows: auto minmax(0,1fr);
+      }
+    }
+
+    ._title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.6rem;
+      border-radius: var(--radius-2) var(--radius-2) 0 0;
+      user-select: none;
+      font-family: var(--font-family-primary);
+      font-weight: 600;
+    }
+
+    .\+active ._title {
+      background: var(--color-accent);
+      color: var(--color-text-primary-inverse);
+      pointer-events: none;
+    }
+
+    ._content {
+      max-height: 100%;
+      overflow: clip;
+    }
+
+    ._inner {
+      padding: 1.6rem;
+    }
+
+    ._marker {
+      width: 2ch;
+      font-size: 3.6rem;
+      text-align: center;
+    }
+
+    ._marker::before {
+      content: '+';
+    }
+
+    .\+active ._marker::before {
+      content: '';
+    }
+  }
+</style>

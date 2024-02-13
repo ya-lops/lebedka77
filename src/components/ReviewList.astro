@@ -1,0 +1,51 @@
+---
+import ReviewCard from "./partial/ReviewCard.astro";
+import reviews from "@/data/reviews";
+
+const data = reviews;
+---
+
+<div class="app-reviews">
+  <div class="app-reviews__inner">
+    {data.map((review) => <ReviewCard data={review} />)}
+  </div>
+</div>
+
+<style lang="scss">
+  .app-reviews {
+    width: 100%;
+    
+    &__inner {
+      display: grid;
+      gap: 2.4rem;
+
+      @media (width < 576px) {
+        grid-auto-columns: max(280px, 80%);
+        grid-auto-flow: column;
+        padding-bottom: .4rem;
+        margin-inline: calc(-1 * var(--padding-inline));
+        padding-inline: var(--padding-inline);
+        scroll-padding-inline: calc(2 * var(--padding-inline));
+        scroll-snap-type: x mandatory;
+        overflow-x: auto;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        ._item {
+          scroll-snap-align: start;
+        }
+      }
+
+      @media (width > 576px) {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+      }
+
+      @media (width > 992px) {
+        grid-template-columns: auto auto auto;
+        gap: 2.4rem;
+      }
+    }
+  }
+</style>

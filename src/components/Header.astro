@@ -1,0 +1,72 @@
+---
+import ButtonLink from "./partial/ButtonLink.astro";
+import Logo from "./partial/Logo.astro";
+import Nav from "./partial/Nav.astro";
+---
+
+<header class="app-header">
+  <div class="container">
+    <div class="app-header__inner">
+      <a href="/lebedka/" class="_logo">
+        <Logo />
+      </a>
+
+      <div class="+hide-on-sm">
+        <div class="_nav">
+          <Nav />
+        </div>
+      </div>
+      <div class="_actions">
+        <ButtonLink href="tel:79255144137" theme="primary">Нужна помощь!</ButtonLink>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style lang="scss">
+  .app-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--color-surface-0-light);
+    isolation: isolate;
+    width: 100%;
+
+    &__inner {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      padding-block: 2rem;
+
+      @media (width < 960px) {
+        grid-template-columns: minmax(0, 1fr) auto ;
+      }
+    }
+
+    .\+hide-on-sm {
+      @media (width < 960px) {
+        display: none;
+      }
+
+      @media (width > 960px) {
+        display: contents;
+      }
+    }
+
+    ._logo {
+      text-decoration: none;
+      user-select: none;
+      margin-right: auto;
+    }
+
+    ._nav {
+      justify-self: center;
+    }
+
+    ._actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+  }
+</style>

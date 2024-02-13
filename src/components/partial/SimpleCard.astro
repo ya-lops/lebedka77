@@ -1,0 +1,50 @@
+---
+const { data } = Astro.props;
+---
+
+<div class="app-card">
+  <div class="_image">
+    <img src={data.image} alt="" loading="lazy"/>
+  </div>
+  <div class="_label">{data.name}</div>
+</div>
+
+<style lang="scss">
+  .app-card {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-areas: "c";
+    border-radius: var(--radius-3);
+
+    ._image {
+      grid-area: c;
+      aspect-ratio: 16/9;
+      filter: brightness(0.75);
+      border-radius: var(--radius-3);
+      overflow: clip;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: scale 0.33s;
+        will-change: scale;
+        pointer-events: none;
+      }
+    }
+
+    &:hover ._image img {
+      scale: 1.05;
+    }
+
+    ._label {
+      align-self: end;
+      z-index: 2;
+      grid-area: c;
+      padding: 2.4rem;
+      color: var(--color-text-primary-inverse);
+      font-size: 1.8rem;
+      font-weight: 500;
+    }
+  }
+</style>

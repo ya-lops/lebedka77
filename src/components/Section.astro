@@ -1,0 +1,232 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"section"> {
+  title: string;
+  subtitle?: string;
+  actionLink?: string;
+  actionLabel?: string;
+  split?: boolean;
+  imageOneSrc?: string;
+  imageTwoSrc?: string;
+  classes?: string;
+  centeredTitle?: boolean;
+}
+
+const {
+  title,
+  subtitle,
+  actionLink,
+  actionLabel,
+  split,
+  imageOneSrc,
+  imageTwoSrc,
+  classes,
+  centeredTitle,
+  ...rest
+} = Astro.props;
+---
+
+<section
+  class:list={[
+    "app-section",
+    { "+split": split },
+    { "+centered-title": centeredTitle },
+    { classes },
+  ]}
+  {...rest}
+  x-data="{show: false}"
+  x-intersect:enter="show = true"
+  :class="{'+intersect': show === true}"
+>
+  <div class="container">
+    <div class="app-section__inner">
+      {
+        !!split && (
+          <div class="app-section__images _images">
+            {imageOneSrc && (
+              <div class="_imageOne">
+                <img src={imageOneSrc} alt="" loading="lazy" />
+              </div>
+            )}
+            {imageTwoSrc && (
+              <div class="_imageTwo">
+                <img src={imageTwoSrc} alt="" loading="lazy" />
+              </div>
+            )}
+          </div>
+        )
+      }
+      <div class="_splitwrap">
+        <header class="app-section__header">
+          <h2 class="_title" set:html={title} />
+
+          {
+            subtitle && (
+              <h4 class="_subtitle">
+                <div set:html={subtitle} />
+              </h4>
+            )
+          }
+
+          {
+            !split && actionLabel && actionLink && (
+              <div class="_action">
+                <a href={actionLink}>{actionLabel}</a>
+              </div>
+            )
+          }
+        </header>
+        <div class="app-section__content"><slot /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .app-section {
+    padding-block: clamp(4.6rem, 6.75%, 8rem);
+    overflow: clip;
+
+    &:nth-child(even of .app-section) {
+      background: var(--color-surface-1);
+    }
+
+    &:not(.\+split) {
+      ._splitwrap {
+        display: contents;
+      }
+    }
+
+    &__inner {
+      display: grid;
+      grid-template-columns: 100%;
+      gap: clamp(1.6rem, 2vmin, 4.8rem);
+
+      .\+split & {
+        grid-template-columns: 100%;
+
+        @media (min-width: 992px) {
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          align-items: center;
+        }
+      }
+    }
+
+    &__images {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      gap: 1.6rem;
+      min-height: 150px;
+      padding-right: 3.2rem;
+
+      @media (width > 768px) {
+        min-height: 350px;
+      }
+
+      &:has(> :only-child) {
+        grid-template-columns: minmax(0, 400px);
+        justify-content: center;
+      }
+
+      > * {
+        border-radius: var(--radius-3);
+        overflow: clip;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      ._imageOne {
+        translate: 0 -2rem;
+      }
+
+      ._imageTwo {
+        translate: 0 2rem;
+      }
+
+      :where(._imageOne, ._imageTwo):only-child {
+        translate: unset;
+        justify-self: center;
+      }
+    }
+
+    &__header {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas: "subtitle action" "title action";
+      gap: clamp(0.8rem, 1.5vmin, 1.6rem);
+
+      @media (width < 576px) {
+        grid-template-areas: "subtitle action" "title title";
+      }
+
+      ._title {
+        grid-area: title;
+        font-size: clamp(2.4rem, 2vw, 3.6rem);
+        line-height: 1.15;
+        text-wrap: balance;
+
+        .\+centered-title & {
+          text-align: center;
+        }
+      }
+
+      ._subtitle {
+        grid-area: subtitle;
+        display: flex;
+        align-items: center;
+        gap: 1.6rem;
+        color: var(--color-accent);
+        font-size: clamp(1.2rem, 1.5vw, 1.8rem);
+        font-weight: 500;
+        text-transform: uppercase;
+        text-wrap: balance;
+        font-family: var(--font-family-secondary);
+        font-weight: 600;
+        pointer-events: none;
+        user-select: none;
+
+        div {
+          transform-origin: 5% 50%;
+          scale: 7.5;
+          opacity: 0.035;
+
+          @media (width > 960px) {
+            scale: 12;
+          }
+
+          &::before {
+            content: "";
+            width: 3.5rem;
+            height: 2px;
+            background: currentColor;
+          }
+        }
+      }
+
+      ._action {
+        grid-area: action;
+        align-self: end;
+        color: var(--color-text-secondary);
+
+        a {
+          color: inherit;
+          text-decoration: none;
+          font-weight: 500;
+        }
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-flow: column;
+      align-items: flex-start;
+      gap: 2.4rem;
+      margin-top: 2.4rem;
+    }
+  }
+</style>
