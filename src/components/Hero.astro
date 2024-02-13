@@ -45,10 +45,12 @@ const data = {
     <div class="_image">
       <Image
         src={heroImage}
+        quality="mid"
         widths={[600, heroImage.width]}
-        sizes={`((max-width: 720px) 600px, ${heroImage.width}px`}
+        sizes={`600px, ((min-width: 960px) ${heroImage.width}px`}
         alt="Бездорожье с застрявшими машинами"
         decoding="auto"
+        loading="eager"
       />
     </div>
   </div>
