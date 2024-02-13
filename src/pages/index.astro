@@ -107,14 +107,14 @@ import ButtonLink from "@/components/partial/ButtonLink.astro";
     background: none;
   }
 
-  .\+centered {
-    margin-inline: auto;
-  }
-
   img {
     user-select: none;
     -webkit-user-select: none;
     pointer-events: none;
+  }
+
+  .\+centered {
+    margin-inline: auto;
   }
 
   .\+frame {
@@ -138,26 +138,5 @@ import ButtonLink from "@/components/partial/ButtonLink.astro";
     & + & + &::after {
       transform: rotate(-1.2deg) skewX(-0.11deg);
     }
-  }
-
-  ._free-lesson {
-    text-wrap: balance;
-    line-height: 1.5;
-
-    h3 {
-      font-family: var(--font-family-secondary);
-      font-size: 3.2rem;
-    }
-
-    p {
-      font-size: 2.4rem;
-    }
-  }
-
-  hr {
-    width: 100%;
-    border: 0;
-    height: 2px;
-    background: var(--color-accent);
   }
 </style>
