@@ -35,7 +35,9 @@ import YandexMetrika from "@/components/YandexMetrika.astro";
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="manifest" href="site.webmanifest" />
     <link rel="preload" as="image" href="/images/bg1.webp" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&family=Rubik+Vinyl&display=swap" rel="stylesheet">
   </head>
   <body class="">
     <slot />
@@ -44,14 +46,14 @@ import YandexMetrika from "@/components/YandexMetrika.astro";
 </html>
 
 <style lang="scss" is:global>
-  @import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap");
-  @import url("https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap");
+  // @import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600&display=swap");
+  // @import url("https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap");
 
   :root {
     --color-accent: hsl(30, 97%, 51%);
     --color-surface-0: hsl(222, 67%, 6%);
     --color-surface-0-light: hsl(222, 67%, 6%);
-    --color-surface-1: color-mix(in oklab, var(--color-accent), #000 75%);
+    --color-surface-1: color-mix(in oklab, var(--color-accent), #000 65%);
     --color-accent-dark: color-mix(in oklab, var(--color-accent), #000 5%);
     --color-text-accent: var(--color-accent);
     --color-text-primary: hsl(33, 12%, 82%);

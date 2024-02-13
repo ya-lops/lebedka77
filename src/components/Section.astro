@@ -35,9 +35,6 @@ const {
     { classes },
   ]}
   {...rest}
-  x-data="{show: false}"
-  x-intersect:enter="show = true"
-  :class="{'+intersect': show === true}"
 >
   <div class="container">
     <div class="app-section__inner">
@@ -193,7 +190,7 @@ const {
         div {
           transform-origin: 5% 50%;
           scale: 7.5;
-          opacity: 0.035;
+          opacity: 0.05;
 
           @media (width > 960px) {
             scale: 12;
