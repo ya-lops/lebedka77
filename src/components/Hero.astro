@@ -7,7 +7,7 @@ interface Hero {
 
 import ButtonLink from "@/components/partial/ButtonLink.astro";
 import { Image } from "astro:assets";
-import heroImage from "@/images/hero.jpg";
+import heroImage from "@/images/hero2.jpg";
 
 const { title, text, classes, ...rest } = Astro.props;
 
@@ -46,9 +46,9 @@ const data = {
     <div class="_image">
       <Image
         src={heroImage}
-        quality="mid"
+        quality="high"
         widths={[600, heroImage.width]}
-        sizes={`600px, ((min-width: 960px) ${heroImage.width}px`}
+        sizes={`((max-width: 960px) 600px,${heroImage.width}px`}
         alt="Бездорожье с застрявшими машинами"
         decoding="auto"
         loading="eager"
@@ -173,12 +173,11 @@ const data = {
           position: relative;
           z-index: 1;
           width: 100%;
-          height: 100%;
-          object-fit: cover;
-          opacity: 0.25;
-          margin-left: auto;
-          translate: 50% 0;
           height: var(--_height);
+          margin-left: auto;
+          object-fit: cover;
+          translate: 50% 0;
+          opacity: 0.25;
         }
 
         @media (width > 960px) {

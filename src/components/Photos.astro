@@ -1,0 +1,77 @@
+---
+import PhotoCard from "@/components/partial/PhotoCard.astro";
+import photosData from "@/data/photos";
+---
+
+<div class="photos js-photos">
+  {photosData.map(photo => (
+    <div class="photos__item +frame">
+      <PhotoCard src={photo.src} alt={photo.alt} />
+    </div>
+  ))}
+</div>
+
+<style lang="scss">
+  .photos {
+    width: 100%;
+
+    @media (width < 480px) {
+      width: calc(100% - 3rem);
+      margin-inline: 1.5rem;
+    }
+
+    &__item {
+      width: 350px;
+      // height: 200px;
+      aspect-ratio: 16/9;
+    }
+  }
+</style>
+
+<style lang="scss" is:global>
+  // Slick tuning
+  .slick-track {
+    display: flex;
+    gap: 1rem;
+  }
+</style>
+
+<script type="text/javascript" src="src/scripts/vendor/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="src/scripts/vendor/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="src/scripts/vendor/slick/slick.min.js"></script>
+<script type="text/javascript">
+  console.log('test');
+
+  $('.js-photos').slick({
+    infinite: true,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  });
+</script>

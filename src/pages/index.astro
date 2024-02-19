@@ -16,6 +16,8 @@ import Split from "@/components/partial/Split.astro";
 import HowItWorks from "@/components/HowItWorks.astro";
 import WorkFlow from "@/components/WorkFlow.astro";
 import ButtonLink from "@/components/partial/ButtonLink.astro";
+import Photos from "@/components/Photos.astro";
+
 ---
 
 <Lebedka>
@@ -36,7 +38,7 @@ import ButtonLink from "@/components/partial/ButtonLink.astro";
   >
     <Split>
       <Fragment slot="start">
-        <Image src={howItWorksImage} quality="mid" alt="Грязная машина" decoding="auto"/>
+        <Image class="+mask" src={howItWorksImage} quality="mid" alt="Грязная машина" decoding="auto"/>
       </Fragment>
       <Fragment slot="end">
         <HowItWorks />
@@ -62,7 +64,7 @@ import ButtonLink from "@/components/partial/ButtonLink.astro";
   <Section title="<mark>Как</mark> мы помогаем">
     <Split>
       <Fragment slot="end">
-        <Image src={featuresImage} quality="mid" alt="Грязная машина" decoding="auto"/>
+        <Image class="+mask" src={featuresImage} quality="mid" alt="Человек в грязи, но с улыбкой звонит в Лебёдку77" decoding="auto"/>
       </Fragment>
       <Fragment slot="start">
         <Features />
@@ -71,7 +73,7 @@ import ButtonLink from "@/components/partial/ButtonLink.astro";
   </Section>
 
   <Section id="photos" title="Фотографии" subtitle="Работаем">
-    <p>Совсем скоро здесь появятся фотографии. Ещё чуть-чуть.. Может быть завтра.</p>
+    <Photos/>
   </Section>
 
   <Section
@@ -115,6 +117,12 @@ import ButtonLink from "@/components/partial/ButtonLink.astro";
 
   .\+centered {
     margin-inline: auto;
+  }
+
+  .\+mask {
+    mask-image: url(/images/mask.png);
+    mask-size: contain;
+    mask-repeat: no-repeat;
   }
 
   .\+frame {
